@@ -1,24 +1,28 @@
-# game.py
+# Python_learning/game.py
 import pygame
-import random
 
-pygame.init()
-pygame.display.set_caption("Yeet Yeet")
-screen = pygame.display.set_mode((800, 600))
+class SpaceRocks:
+    def __init__(self):
+        # Initialize pygame and set the title
+        pygame.init()
+        pygame.display.set_caption("Space Rocks")
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            quit()
+        self.screen = pygame.display.set_mode((800,600))
 
-    # Filling the screen colour with an RGB tuple (Blue)
-    screen.fill((135,206,235))
-    # Position of a circle on x y coords with radius r
-    x = random.randint(10,790)
-    y =random.randint(10,590)
-    r = random.randint(2,10)
-    # Draw the actual circle on surface "screen" with rgb tuple value
-    # NOTE: Drawing to buffer
-    pygame.draw.circle(screen,(0,0,150), (x,y), r)
-    # Flip method takes everything in buffer and displays it to screen all at once
-    pygame.display.flip()
+    def main_loop(self):
+        while True:
+            self._handle_input()
+            self._game_logic()
+            self._draw()
+    
+    def _handle_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                quit()
+
+    def _game_logic(self):
+        pass
+
+    def _draw(self):
+        self.screen.fill((0,0,255))
+        pygame.display.flip()
